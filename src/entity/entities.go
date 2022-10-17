@@ -1,58 +1,63 @@
 package entity
 
-import (
-	"fmt"
-	"time"
-)
+import "time"
 
-type Person struct {
-	name     string
-	age      uint8
-	orgName  string
-	birthday time.Time
+type USDToCNH struct {
+	ID      int64
+	Price   float32
+	Change  string
+	Percent string
 }
 
-func (p *Person) Name() string {
-	return p.name
-}
-
-func (p *Person) SetName(name string) {
-	p.name = name
-}
-
-func (p *Person) Age() uint8 {
-	return p.age
-}
-
-func (p *Person) SetAge(age uint8) {
-	p.age = age
-}
-
-func (p *Person) OrgName() string {
-	return p.orgName
-}
-
-func (p *Person) SetOrgName(orgName string) {
-	p.orgName = orgName
-}
-
-func (p *Person) Birthday() time.Time {
-	return p.birthday
-}
-
-func (p *Person) SetBirthday(birthday time.Time) {
-	p.birthday = birthday
-}
-
-func (p *Person) ShowInfo() {
-	fmt.Println("this man is:", p.name, "age is:", p.age)
-}
-
-func NewPerson() *Person {
-	p := Person{
-		"asd", 23, "123", time.Now(),
+func NewUSDToCNH(price float32, change string, percent string) USDToCNH {
+	return USDToCNH{
+		ID:      time.Now().UnixMilli(),
+		Price:   price,
+		Change:  change,
+		Percent: percent,
 	}
-	//p.name = "王飞"
-	//p.age = 90
-	return &p
+}
+
+func (t USDToCNH) TableName() string {
+	return "t_usd_cnh"
+}
+
+type BitcoinToUSD struct {
+	ID      int64
+	Price   float32
+	Change  string
+	Percent string
+}
+
+func (t BitcoinToUSD) TableName() string {
+	return "t_bitcoin_usd"
+}
+
+func NewBitcoinToUSD(price float32, change string, percent string) BitcoinToUSD {
+	return BitcoinToUSD{
+		ID:      time.Now().UnixMilli(),
+		Price:   price,
+		Change:  change,
+		Percent: percent,
+	}
+}
+
+type Shangzheng struct {
+	ID      int64
+	Price   float32
+	Change  string
+	Percent string
+}
+
+func (t Shangzheng) TableName() string {
+	return "t_shangzheng"
+}
+
+func NewShangzheng(price float32, change string, percent string) Shangzheng {
+	return Shangzheng{
+		ID:      time.Now().UnixMilli(),
+		Price:   price,
+		Change:  change,
+		Percent: percent,
+	}
 }
